@@ -1,20 +1,20 @@
 let Allpng = [
-    "/atom.png",
-    "/calc.png",
-    "/chrome.png",
-    "/fox.png",
-    "/tools_green.png",
-    "/wifi.png",
-    "/vlc.png",
-    "/tools_orange.png",
-    "/atom.png",
-    "/calc.png",
-    "/chrome.png",
-    "/fox.png",
-    "/tools_green.png",
-    "/wifi.png",
-    "/vlc.png",
-    "/tools_orange.png",
+    "atom.png",
+    "calc.png",
+    "chrome.png",
+    "fox.png",
+    "tools_green.png",
+    "wifi.png",
+    "vlc.png",
+    "tools_orange.png",
+    "atom.png",
+    "calc.png",
+    "chrome.png",
+    "fox.png",
+    "tools_green.png",
+    "wifi.png",
+    "vlc.png",
+    "tools_orange.png",
 ]
 
 const startBtn = document.getElementById('start')
@@ -42,28 +42,28 @@ function renderTemplate(shuffled) {
     return `
     <table class="faded" border="0" cellspacing="1" cellpadding="1">
             <tr>
-                <td><img class='in_game ' data-picture="${shuffled[0]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game faded' data-picture="${shuffled[1]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game faded' data-picture="${shuffled[2]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game faded' data-picture="${shuffled[3]}" data-noPng="/noPng.png" src="/noPng.png"></td>
+                <td><img class='in_game ' data-picture="${shuffled[0]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game faded' data-picture="${shuffled[1]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game faded' data-picture="${shuffled[2]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game faded' data-picture="${shuffled[3]}" data-noPng="noPng.png" src="noPng.png"></td>
             </tr>
             <tr>
-                <td><img class='in_game' data-picture="${shuffled[4]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[5]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[6]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[7]}" data-noPng="/noPng.png" src="/noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[4]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[5]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[6]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[7]}" data-noPng="noPng.png" src="noPng.png"></td>
             </tr>
             <tr>
-                <td><img class='in_game' data-picture="${shuffled[8]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[9]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[10]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[11]}" data-noPng="/noPng.png" src="/noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[8]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[9]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[10]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[11]}" data-noPng="noPng.png" src="noPng.png"></td>
             </tr>
             <tr>
-                <td><img class='in_game' data-picture="${shuffled[12]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[13]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[14]}" data-noPng="/noPng.png" src="/noPng.png"></td>
-                <td><img class='in_game' data-picture="${shuffled[15]}" data-noPng="/noPng.png" src="/noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[12]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[13]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[14]}" data-noPng="noPng.png" src="noPng.png"></td>
+                <td><img class='in_game' data-picture="${shuffled[15]}" data-noPng="noPng.png" src="noPng.png"></td>
             </tr>
         </table>
     `
@@ -117,8 +117,10 @@ function hideAll(imgies) {
 function checkOneorTwo(e, imgies) {
 
     let itemPicSet = e.dataset.picture
-
+    console.log(itemPicSet)
     if (e.attributes.src.nodeValue === itemPicSet) {
+        console.log(e.attributes.src.nodeValue, itemPicSet)
+
         return false
     }
 
@@ -146,9 +148,10 @@ function checkOneorTwo(e, imgies) {
 
 
 
+
     let checkSrc = Array.from(new Set(srcitem))
 
-    // console.log(checkSrc)
+
     if (checkSrc.length === 1 || dontHide) {
         return false
     } else { return true }
