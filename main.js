@@ -20,13 +20,22 @@ let Allpng = [
 const startBtn = document.getElementById('start')
 const contenarTable = document.getElementById('containier')
 
-let shuffledd = Allpng
-    .map((a) => ({ sort: Math.random(), value: a }))
-    .sort((a, b) => a.sort - b.sort)
-    .map((a) => a.value)
+// let shuffledd = Allpng
+//     .map((a) => ({ sort: Math.random(), value: a }))
+//     .sort((a, b) => a.sort - b.sort)
+//     .map((a) => a.value)
 
-renderGame(shuffledd)
+// renderGame(shuffledd)
 
+shuffleCards = (a) => {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  let shuffledd = shuffleCards(Allpng)
+  renderGame(shuffledd)
 const clickHandler = function() {
     window.location.reload();
 }
