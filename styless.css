@@ -1,0 +1,138 @@
+@charset "UTF-8";
+body {
+    background-color: beige;
+}
+
+table {
+    width: 443px;
+    margin: auto;
+    margin-top: 67px;
+}
+
+table tr {
+    height: 100px;
+}
+
+.start_contanier {
+    position: relative;
+}
+
+#start {
+    height: 40px;
+    width: 200px;
+    margin-top: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #FCE2C1;
+    background-image: -webkit-linear-gradient(top, #FCE2C1, #EEB44F);
+    background-image: -moz-linear-gradient(top, #FCE2C1, #EEB44F);
+    background-image: -ms-linear-gradient(top, #FCE2C1, #EEB44F);
+    background-image: -o-linear-gradient(top, #FCE2C1, #EEB44F);
+    background-image: -webkit-gradient(to bottom, #FCE2C1, #EEB44F);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    height: 50px;
+    line-height: 50px;
+    color: #FFFFFF;
+    font-family: Garamond;
+    width: 200px;
+    font-size: 45px;
+    font-weight: 100;
+    padding: 10px;
+    -webkit-box-shadow: 1px 1px 20px 0 #000000;
+    -moz-box-shadow: 1px 1px 20px 0 #000000;
+    box-shadow: 1px 1px 20px 0 #000000;
+    text-shadow: 4px 1px 20px #000000;
+    border: solid #337FED 0;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+#start:hover {
+    background: #EEB44F;
+    background-image: -webkit-linear-gradient(top, #EEB44F, #FCE2C1);
+    background-image: -moz-linear-gradient(top, #EEB44F, #FCE2C1);
+    background-image: -ms-linear-gradient(top, #EEB44F, #FCE2C1);
+    background-image: -o-linear-gradient(top, #EEB44F, #FCE2C1);
+    background-image: -webkit-gradient(to bottom, #EEB44F, #FCE2C1);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both
+}
+
+.animated.infinite {
+    animation-iteration-count: infinite
+}
+
+.animated.hinge {
+    animation-duration: 2s
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+    animation-duration: .75s
+}
+
+.animated.flip {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flip
+}
+
+@keyframes tada {
+    from {
+        transform: scale3d(1, 1, 1)
+    }
+    10%,
+    20% {
+        transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg)
+    }
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg)
+    }
+    40%,
+    60%,
+    80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg)
+    }
+    to {
+        transform: scale3d(1, 1, 1)
+    }
+}
+
+.tada {
+    animation-name: tada
+}
+
+@keyframes rotateOut {
+    from {
+        transform-origin: center;
+        opacity: 1
+    }
+    to {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, 200deg);
+        opacity: 0
+    }
+}
+
+.rotateOut {
+    animation-name: rotateOut
+}
