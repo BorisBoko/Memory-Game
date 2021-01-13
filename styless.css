@@ -70,8 +70,13 @@ span {
     line-height: 16px;
     color: #FFFFFF;
     font-family: Garamond;
+<<<<<<< HEAD
     width: 139px;
     font-size: 25px;
+=======
+    width: 200px;
+    font-size: 35px;
+>>>>>>> e172a95d8209bdcefe360a6eaef670735cfe5d90
     font-weight: 100;
     padding: 8px;
     -webkit-box-shadow: 1px 1px 20px 0 #000000;
