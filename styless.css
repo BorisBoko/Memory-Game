@@ -6,7 +6,7 @@ body {
 table {
     width: 443px;
     margin: auto;
-    margin-top: 67px;
+    margin-top: 25px;
 }
 
 table tr {
@@ -14,18 +14,49 @@ table tr {
 }
 
 .start_contanier {
+    margin-top: -230px;
+}
+
+span {
+    margin-left: 33px;
+}
+
+.timerContaner {
+    display: grid;
+    margin: auto;
+    height: 90px;
+    width: 90px;
+    border-radius: 100px;
+    background: #AFE9DD
+}
+
+.timerContaner>p {
+    margin: auto;
+    font-size: 2em;
+    color: #F84982;
+}
+
+.time-sec {
     position: relative;
+    display: inline-block;
+    margin: 10px;
+    height: 90px;
+    width: 90px;
+    border-radius: 100px;
+    background: #fff;
+    color: #333;
+}
+
+.main-time {
+    font-weight: 500;
+    line-height: 70px;
+    font-size: 2em;
+    color: #F84982;
 }
 
 #start {
-    height: 40px;
-    width: 200px;
-    margin-top: 40px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    margin: auto;
+    display: block;
     background: #FCE2C1;
     background-image: -webkit-linear-gradient(top, #FCE2C1, #EEB44F);
     background-image: -moz-linear-gradient(top, #FCE2C1, #EEB44F);
@@ -34,24 +65,29 @@ table tr {
     background-image: -webkit-gradient(to bottom, #FCE2C1, #EEB44F);
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    border-radius: 20px;
-    height: 50px;
-    line-height: 50px;
+    border-radius: 30px;
+    height: 16px;
+    line-height: 16px;
     color: #FFFFFF;
     font-family: Garamond;
-    width: 200px;
-    font-size: 45px;
+    width: 139px;
+    font-size: 25px;
     font-weight: 100;
-    padding: 10px;
+    padding: 8px;
     -webkit-box-shadow: 1px 1px 20px 0 #000000;
     -moz-box-shadow: 1px 1px 20px 0 #000000;
     box-shadow: 1px 1px 20px 0 #000000;
     text-shadow: 4px 1px 20px #000000;
     border: solid #337FED 0;
     text-decoration: none;
-    display: inline-block;
     cursor: pointer;
     text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+img {
+    height: 100px;
 }
 
 #start:hover {
@@ -135,4 +171,96 @@ table tr {
 
 .rotateOut {
     animation-name: rotateOut
+}
+
+@keyframes flip {
+    from {
+        transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        animation-timing-function: ease-out
+    }
+    40% {
+        transform: perspective(400px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -190deg);
+        animation-timing-function: ease-out
+    }
+    50% {
+        transform: perspective(400px) translate3d(0, 0, 100px) rotate3d(0, 1, 0, -170deg);
+        animation-timing-function: ease-in
+    }
+    80% {
+        transform: perspective(400px) scale3d(.95, .95, .95);
+        animation-timing-function: ease-in
+    }
+    to {
+        transform: perspective(400px);
+        animation-timing-function: ease-in
+    }
+}
+
+.animated.flip {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flip
+}
+
+@keyframes flipInX {
+    from {
+        transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+        animation-timing-function: ease-in;
+        opacity: 0
+    }
+    40% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        animation-timing-function: ease-in
+    }
+    60% {
+        transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+        opacity: 1
+    }
+    80% {
+        transform: perspective(400px) rotate3d(1, 0, 0, -5deg)
+    }
+    to {
+        transform: perspective(400px)
+    }
+}
+
+.flipInX {
+    -webkit-backface-visibility: visible!important;
+    backface-visibility: visible!important;
+    animation-name: flipInX
+}
+
+@keyframes zoomOutDown {
+    40% {
+        opacity: 1;
+        transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+        animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190)
+    }
+    to {
+        opacity: 0;
+        transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
+        transform-origin: center bottom;
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
+    }
+}
+
+.zoomOutDown {
+    animation-name: zoomOutDown
+}
+
+@keyframes zoomInUp {
+    from {
+        opacity: 0;
+        transform: scale3d(.1, .1, .1) translate3d(0, 1000px, 0);
+        animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190)
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
+    }
+}
+
+.zoomInUp {
+    animation-name: zoomInUp
 }
