@@ -36,14 +36,25 @@ MyAnimate(left1, 3050, 1000, 'flip')
 
 
 
-
-
+let startTime = 0
 startBtn.addEventListener('click', function() {
+    const containier = document.getElementById('containier')
+    const inputsave = document.querySelector('.inputsave')
+    if (containier.style.display === 'none') {
+        containier.style.display = 'block'
+    }
+    if (inputsave.style.display === 'block') {
+        inputsave.style.display = 'none'
+    }
+    startTime = 0
     let clone = document.querySelector('.clone')
     let contenarTable = document.getElementById('containier')
     if (clone) { clone.remove() }
     if (contenarTable) { contenarTable.innerHTML = '' }
     startContanier.classList.add('animated', 'zoomOutDown')
+
+    // startContanier.classList.add('animated', 'flipInX')
+    console.log('')
     setTimeout(() => {
         startContanier.style.marginTop = '50px'
 
@@ -52,11 +63,19 @@ startBtn.addEventListener('click', function() {
 
             startContanier.classList.add('animated', 'zoomInUp')
 
+
         }, 0);
 
     }, 800);
     // 
 
+
+
+    let time;
+    let notStart = true
+    const timer = document.querySelector('.timerContaner').firstElementChild;
+
+    clearInterval(time)
 
 
 
@@ -130,48 +149,44 @@ startBtn.addEventListener('click', function() {
 
 
     const table = document.querySelector('table')
-    const timer = document.querySelector('.timerContaner').firstElementChild
-    let win = document.querySelectorAll('.in_game')
-    let startTime = 1
-    let started = true;
+
+    function setIntervalTimer() {
+        return time = setInterval(() => {
+            timer.innerText = startTime++
+        }, 1000);
+    }
+
+
     let clickToTable = function(event) {
         const e = event.target
         if (event.target.localName === 'img') {
-
             imgChange(e)
-            if (started) {
-                timerStart(startTime)
+            if (notStart) {
+                notStart = false
+                setIntervalTimer()
             }
+
+            let win = document.querySelectorAll('.in_game')
             if (win.length === 0) {
-                a(false)
-                started = true
+
+
+                const inputsave = document.querySelector('.inputsave')
+                const containier = document.getElementById('containier')
+                inputsave.classList.add('animated', 'bounceInDown')
+                inputsave.style.display = 'block'
+                inputsave.children[0].children[9].textContent = `Congratulations You win in ${timer.textContent} sec.`
+                inputsave.children[0].children[9].classList.add('animated', 'tada')
+                containier.style.display = 'none'
+                clearInterval(time)
 
             }
+
+
         }
     }
-
-
-    function a(x) {
-        let sec = setInterval(() => {
-            timer.innerText = startTime++
-        }, 1000);
-        if (x) {
-
-        } else {
-            clearInterval(sec);
-        }
-
-
-    }
-
-    function timerStart(startTime) {
-        timer.innerText = startTime
-        started = false
-        a(true)
-
-    }
-
     table.addEventListener('click', clickToTable)
+
+
 
 
     function imgChange(e) {
@@ -213,13 +228,12 @@ startBtn.addEventListener('click', function() {
         let itemPicSet = e.dataset.picture
             //console.log(itemPicSet)
         if (e.attributes.src.nodeValue === itemPicSet) {
-            console.log(e.attributes.src.nodeValue, itemPicSet)
-
             return false
         }
 
         const srcitem = [];
         const fixItem = [];
+        console.log(fixItem)
         let dontHide = false
 
 

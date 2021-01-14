@@ -14,11 +14,11 @@ table tr {
 }
 
 .start_contanier {
-    margin-top: -230px;
+    margin-top: -293px
 }
 
 span {
-    margin-left: 33px;
+    margin-left: 13px;
 }
 
 .timerContaner {
@@ -30,10 +30,21 @@ span {
     background: #AFE9DD
 }
 
+.timeSec {
+    margin-bottom: -30px;
+}
+
 .timerContaner>p {
     margin: auto;
     font-size: 2em;
     color: #F84982;
+    margin-bottom: -4px;
+}
+
+.timerContaner>span {
+    font-family: sans-serif;
+    text-align: center;
+    margin-left: 0px;
 }
 
 .time-sec {
@@ -65,20 +76,15 @@ span {
     background-image: -webkit-gradient(to bottom, #FCE2C1, #EEB44F);
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    border-radius: 30px;
-    height: 16px;
-    line-height: 16px;
+    border-radius: 115px;
+    height: 52px;
+    padding-top: 25px;
+    line-height: 27px;
     color: #FFFFFF;
     font-family: Garamond;
-<<<<<<< HEAD
-    width: 139px;
-    font-size: 25px;
-=======
-    width: 200px;
-    font-size: 35px;
->>>>>>> e172a95d8209bdcefe360a6eaef670735cfe5d90
+    width: 97px;
+    font-size: 20px;
     font-weight: 100;
-    padding: 8px;
     -webkit-box-shadow: 1px 1px 20px 0 #000000;
     -moz-box-shadow: 1px 1px 20px 0 #000000;
     box-shadow: 1px 1px 20px 0 #000000;
@@ -101,10 +107,10 @@ img {
     background-image: -moz-linear-gradient(top, #EEB44F, #FCE2C1);
     background-image: -ms-linear-gradient(top, #EEB44F, #FCE2C1);
     background-image: -o-linear-gradient(top, #EEB44F, #FCE2C1);
-    background-image: -webkit-gradient(to bottom, #EEB44F, #FCE2C1);
+    /* background-image: -webkit-gradient(to bottom, #EEB44F, #FCE2C1); */
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    border-radius: 20px;
+    border-radius: 115px;
     text-decoration: none;
 }
 
@@ -268,4 +274,160 @@ img {
 
 .zoomInUp {
     animation-name: zoomInUp
+}
+
+div {
+    margin: 25px auto;
+    width: 700px;
+}
+
+.inputsave {
+    display: none;
+}
+
+.win>span {
+    width: 20px;
+    height: 10px;
+    display: block;
+    border-radius: 10px;
+    float: left;
+}
+
+label {
+    font-style: italic;
+    color: darkgreen;
+}
+
+button {
+    border: none;
+    height: 28px;
+    width: 57px;
+    border-radius: 7px;
+    color: darkgreen;
+    background-color: darkkhaki;
+    font-size: 16px;
+    font-family: initial;
+}
+
+.win>span:nth-child(2n-1) {
+    background: #DA70D6;
+    animation: bar1 0.8s infinite ease;
+}
+
+.win>span:nth-child(2n) {
+    background: yellow;
+    animation: bar2 0.8s infinite ease;
+}
+
+@keyframes bar1 {
+    0% {
+        background: #DA70D6
+    }
+    100% {
+        background: yellow
+    }
+}
+
+@keyframes bar2 {
+    0% {
+        background: yellow
+    }
+    100% {
+        background: #DA70D6
+    }
+}
+
+h2 {
+    color: #FF4500;
+    clear: both;
+    padding-top: 15px;
+    padding-left: 15px;
+    font-family: verdana;
+    font-size: 14px;
+}
+
+.inputsave {
+    height: 185px;
+    padding-top: 3px;
+    padding-left: 66px;
+    background-color: thistle;
+    border-radius: 65px;
+    width: 390px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+button:focus,
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    background-color: yellowgreen;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    cursor: pointer;
+}
+
+.inputsave>input {
+    margin-top: 35px;
+    border-radius: 6px;
+    border: none;
+    height: 26px;
+}
+
+@keyframes bounceInDown {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000)
+    }
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -3000px, 0)
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0)
+    }
+    75% {
+        transform: translate3d(0, -10px, 0)
+    }
+    90% {
+        transform: translate3d(0, 5px, 0)
+    }
+    to {
+        transform: none
+    }
+}
+
+.bounceInDown {
+    animation-name: bounceInDown
+}
+
+@keyframes zoomInLeft {
+    from {
+        opacity: 0;
+        transform: scale3d(.1, .1, .1) translate3d(-1000px, 0, 0);
+        animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190)
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(.475, .475, .475) translate3d(10px, 0, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)
+    }
+}
+
+.zoomInLeft {
+    animation-name: zoomInLeft
 }
