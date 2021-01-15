@@ -1,5 +1,41 @@
 const startBtn = document.getElementById('start')
 const startContanier = document.querySelector('.start_contanier')
+const startResult = document.querySelector('.result')
+const returnMenu = document.querySelector('.start')
+document.querySelector('button').disabled = false
+
+returnMenu.addEventListener('click', () => {
+    window.location.reload();
+})
+async function comeInfoFirebase() {
+    const data = await fetchWiner()
+    if (data !== null) {
+        let newData = Object.keys(data).map(key => {
+            const item = data[key]
+            return item
+        })
+
+        let sum = 1
+            // let filterData = newData.filter(function(a) {
+            //     return +a.timer < 60
+            // })
+            // console.log(filterData)
+        let filterData2 = newData.sort(function(a, b) {
+            return a.timer - b.timer;
+        })
+        const html = filterData2.map(item => {
+            return `<div class='animated flipInX'><p> ${sum++}.${item.name}</p><span>${item.timer} sec.</span></div>`
+        })
+        setTimeout(() => {
+            startResult.insertAdjacentHTML('beforeend', html.join(' '))
+        }, 500);
+
+    }
+
+}
+comeInfoFirebase()
+
+
 
 let atom = document.querySelectorAll('.atom'),
     calc = document.querySelectorAll('.calc'),
@@ -35,9 +71,14 @@ MyAnimate(left1, 3050, 1000, 'flip')
 
 
 
-
+let notStart = true
 let startTime = 0
+let imAdd = true
 startBtn.addEventListener('click', function() {
+
+    document.querySelector('button').disabled = false
+
+
     const containier = document.getElementById('containier')
     const inputsave = document.querySelector('.inputsave')
     if (containier.style.display === 'none') {
@@ -54,9 +95,9 @@ startBtn.addEventListener('click', function() {
     startContanier.classList.add('animated', 'zoomOutDown')
 
     // startContanier.classList.add('animated', 'flipInX')
-    console.log('')
+
     setTimeout(() => {
-        startContanier.style.marginTop = '50px'
+        startContanier.style.marginTop = '24px'
 
         setTimeout(() => {
             startContanier.classList.remove('animated', 'zoomOutDown')
@@ -65,21 +106,15 @@ startBtn.addEventListener('click', function() {
 
 
         }, 0);
-
+        startContanier.firstElementChild.textContent = 'Play Again'
+        startContanier.firstElementChild.style.color = 'crimson'
     }, 800);
     // 
 
 
 
     let time;
-    let notStart = true
     const timer = document.querySelector('.timerContaner').firstElementChild;
-
-    clearInterval(time)
-
-
-
-
 
 
     let Allpng = [
@@ -109,8 +144,6 @@ startBtn.addEventListener('click', function() {
     renderGame(shuffledd)
 
     function renderGame(shuffled) {
-
-        //contenarTable.innerHTML = ''
         const template = renderTemplate(shuffled)
         contenarTable.insertAdjacentHTML('afterbegin', template);
     }
@@ -151,9 +184,31 @@ startBtn.addEventListener('click', function() {
     const table = document.querySelector('table')
 
     function setIntervalTimer() {
-        return time = setInterval(() => {
+        time = setInterval(() => {
             timer.innerText = startTime++
         }, 1000);
+    }
+    clearInterval(time)
+    let name = document.getElementById('name')
+    name.parentElement.style.display = 'block'
+    let clickbuttom = async function() {
+        let data = { name: name.value, timer: timer.innerText }
+
+        // let timer = document.querySelector('.timerContaner').firstElementChild.innerText;
+
+        if (name.value.trim(' ') !== '') {
+            document.querySelector('button').disabled = true
+            await createWiner(data)
+            name.parentElement.style.display = 'none'
+
+        } else {
+            alert('Please write Your name')
+        }
+        name.value = ""
+        imAdd = false
+    }
+    if (imAdd) {
+        document.querySelector('button').addEventListener('click', clickbuttom)
     }
 
 
@@ -169,13 +224,12 @@ startBtn.addEventListener('click', function() {
             let win = document.querySelectorAll('.in_game')
             if (win.length === 0) {
 
-
                 const inputsave = document.querySelector('.inputsave')
                 const containier = document.getElementById('containier')
                 inputsave.classList.add('animated', 'bounceInDown')
                 inputsave.style.display = 'block'
                 inputsave.children[0].children[9].textContent = `Congratulations You win in ${timer.textContent} sec.`
-                inputsave.children[0].children[9].classList.add('animated', 'tada')
+                inputsave.children[0].children[9].classList.add('animated', 'zoomInLeft')
                 containier.style.display = 'none'
                 clearInterval(time)
 
@@ -226,14 +280,14 @@ startBtn.addEventListener('click', function() {
     function checkOneorTwo(e, imgies) {
 
         let itemPicSet = e.dataset.picture
-            //console.log(itemPicSet)
+
         if (e.attributes.src.nodeValue === itemPicSet) {
             return false
         }
 
         const srcitem = [];
         const fixItem = [];
-        console.log(fixItem)
+
         let dontHide = false
 
 
@@ -267,3 +321,31 @@ startBtn.addEventListener('click', function() {
         } else { return true }
     }
 })
+
+
+async function createWiner(data) {
+    try {
+        const request = new Request('https://memory-with-boris-default-rtdb.firebaseio.com/posts.json', {
+            method: 'post',
+            body: JSON.stringify(data)
+        })
+        const response = await fetch(request)
+        return await response.json()
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+async function fetchWiner() {
+    try {
+        const request = new Request('https://memory-with-boris-default-rtdb.firebaseio.com/posts.json', {
+            method: 'get'
+        })
+        const response = await fetch(request)
+        return await response.json()
+    } catch (error) {
+        console.log(error)
+    }
+
+}
