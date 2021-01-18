@@ -74,8 +74,15 @@ MyAnimate(left1, 3050, 1000, 'flip')
 let notStart = true
 let startTime = 0
 let imAdd = true
-startBtn.addEventListener('click', function() {
+let canStart = false
 
+startBtn.addEventListener('click', function() {
+    startTime = 0
+
+    if (canStart) {
+        notStart = true
+    }
+    canStart = false
     document.querySelector('button').disabled = false
 
 
@@ -87,7 +94,7 @@ startBtn.addEventListener('click', function() {
     if (inputsave.style.display === 'block') {
         inputsave.style.display = 'none'
     }
-    startTime = 0
+
     let clone = document.querySelector('.clone')
     let contenarTable = document.getElementById('containier')
     if (clone) { clone.remove() }
@@ -192,7 +199,8 @@ startBtn.addEventListener('click', function() {
     let name = document.getElementById('name')
     name.parentElement.style.display = 'block'
     let clickbuttom = async function() {
-        let data = { name: name.value, timer: timer.innerText }
+
+        let data = { name: name.value, timer: startTime - 1 }
 
         // let timer = document.querySelector('.timerContaner').firstElementChild.innerText;
 
@@ -222,8 +230,8 @@ startBtn.addEventListener('click', function() {
             }
 
             let win = document.querySelectorAll('.in_game')
-            if (win.length === 0) {
-
+            if (win.length === 12) {
+                canStart = true
                 const inputsave = document.querySelector('.inputsave')
                 const containier = document.getElementById('containier')
                 inputsave.classList.add('animated', 'bounceInDown')
